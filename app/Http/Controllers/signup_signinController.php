@@ -52,7 +52,7 @@ class signup_signinController extends Controller
             $new_user->fees = "0";
             $name =$request->fullName. '.jpg';
             $new_user->image = $name;
-            //$request->img1->move(public_path('userImage'), $name);
+            $request->img1->move(public_path('userImage'), $name);
         } else {
             $new_user->title = $request->title;
             $new_user->bmdcRegNum = $request->bmdcRegNum;
@@ -61,14 +61,14 @@ class signup_signinController extends Controller
             $new_user->fees = $request->fees;
             $name =$request->fullName. '.jpg';
             $new_user->image = $name;
-            //$request->img2->move(public_path('userImage'), $name);
+            $request->img2->move(public_path('userImage'), $name);
         }
 
         $save = $new_user->save();
         try {
-           // $save = $new_user->save();
+           $save = $new_user->save();
         } catch (\Throwable $th) {
-            //dd($th);
+            dd($th);
         }
         session()->put('signupCheck', TRUE);
         // return redirect('/signin');
